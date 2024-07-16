@@ -8,20 +8,20 @@ function App() {
     <div>
       <ul>
         <li>
-          <Link to='/'>Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to='/page01'>Page 01</Link>
+          <Link to="/page01">Page 01</Link>
         </li>
         <li>
-          <Link to='/page02'>Page 02</Link>
+          <Link to="/page02">Page 02</Link>
         </li>
       </ul>
 
       <Routes>
-        <Route path='/'></Route>
-        <Route path='/page01' element={<Page01 />}></Route>
-        <Route path='/page02' element={<Page02 />}></Route>
+        <Route path="/"></Route>
+        <Route path="/page01" element={<Page01 />}></Route>
+        <Route path="/page02" element={<Page02 />}></Route>
       </Routes>
     </div>
   );
