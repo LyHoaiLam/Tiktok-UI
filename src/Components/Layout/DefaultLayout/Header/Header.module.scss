@@ -3,7 +3,6 @@
     --search-height: 46px;
     --search-top-spacer: -5px;
     --search-bottom-width: 52px;
-
     height: var(--default-layout-header-height);
     width: 100%;
     display: flex;
@@ -54,6 +53,13 @@
     &:focus-within {
         border: 2px solid var(--black);
     }
+}
+
+.search-title {
+    font-weight: 550;
+    font-size: 1.4rem;
+    color: rgba(22, 24, 35, 0.5);
+    padding: 9px 16px;
 }
 
 .search,

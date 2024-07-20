@@ -16,7 +16,7 @@ function Header() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSarchResult([1, 2, 3]);
+            setSarchResult([]);
         }, 0);
     });
     return (

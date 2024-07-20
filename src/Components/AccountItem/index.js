@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import style from './Account.module.scss';
 
 const cx = classNames.bind(style);
@@ -14,10 +14,10 @@ function AccountItem() {
                 alt=""
             />
             <div className={cx('info')}>
-                <p className={cx('name')}>
+                <h4 className={cx('name')}>
                     <span>Nguyễn Văn A</span>
-                    <FontAwesomeIcon icon={faCheck} />
-                </p>
+                    <FontAwesomeIcon className={cx('checkIcon')} icon={faCircleCheck} />
+                </h4>
                 <span classNames={cx('username')}>nguyenvana</span>
             </div>
         </div>
