@@ -1,0 +1,83 @@
+.wrapper {
+    font-size: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    min-width: 100px;
+    padding: 9px 16px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid transparent; //Không bị sê dịch
+    user-select: none;
+
+    //Khi 2 Button cạnh nhau nó sẽ xa nhau
+    + .wrapper {
+        margin-left: 8px;
+    }
+
+    //Đưa disable vào trong wrapper để có độ ưu tiên cao hơn để có thể thắng css của các class khác
+    &.disable {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+.rounded {
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0 0 0 / 6%);
+    border-color: rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+//Button Types
+.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    &:hover {
+        cursor: pointer;
+        border-color: var(--primary);
+        background-color: #fb607f;
+    }
+}
+
+.outline {
+    color: var(--primary);
+    border-color: currentColor; //Ăn theo màu phía trên (color)
+    &:hover {
+        border-color: currentColor;
+        background-color: rgba(254, 44, 85, 0.06);
+        cursor: pointer;
+    }
+}
+
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+//Disable
+
+// Button size
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+
+.large {
+    min-width: 140px;
+    padding: 14px 16px;
+}
+.className {
+}

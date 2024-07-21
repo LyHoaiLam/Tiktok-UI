@@ -5,9 +5,10 @@ import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
-import { faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass, faSign, faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import AccountItem from '~/Components/AccountItem';
+import Button from '~/Components/Button';
 
 const cx = classNames.bind(style);
 
@@ -92,7 +93,40 @@ function Header() {
                     </div>
                 </Tippy>
 
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    {/* <Button primary href="https://www.youtube.com/watch?v=cJCS6DuKwE0" target="_blank">  target="_blank" dùng làm tab qua page khác*/}
+                    <Button text>Upload</Button>
+                    <Button primary>Login</Button>
+
+                    {/* <Button outline>Login</Button> */}
+
+                    {/* <Button primary large>
+                        Login
+                    </Button> */}
+                    {/* <Button primary small>
+                        Login
+                    </Button> */}
+                    {/* <Button primary disable>
+                        Login
+                    </Button> */}
+
+                    {/* <Button primary leftIcon={<FontAwesomeIcon icon={faSignIn} />}>
+                        Login
+                    </Button> */}
+
+                    {/* <Button
+                        primary
+                        leftIcon={<FontAwesomeIcon icon={faSignIn} />}
+                        rightIcon={<FontAwesomeIcon icon={faSignIn} />}
+                    >
+                        Login
+                    </Button> */}
+
+                    {/* cx này là của bên Header chứ không phải bên Button */}
+                    {/* <Button rounded className={cx('custome-login')}>
+                        Upload
+                    </Button> */}
+                </div>
             </div>
         </header>
     );
