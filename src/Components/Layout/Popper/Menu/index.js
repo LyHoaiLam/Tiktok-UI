@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Tippy from '@tippyjs/react';
+import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import style from './Menu.module.scss';
@@ -39,8 +39,7 @@ function Menu({ children, items = [], onChange = defaultFc }) {
     return (
         <Tippy
             interactive
-            // visible
-            // delay={[0, 500]}
+            delay={[0, 1000]}
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -58,6 +57,7 @@ function Menu({ children, items = [], onChange = defaultFc }) {
                     </PopperWrapper>
                 </div>
             )}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
         </Tippy>

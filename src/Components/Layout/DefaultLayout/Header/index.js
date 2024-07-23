@@ -4,15 +4,19 @@ import style from './Header.module.scss';
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react/headless';
+import Tippy2 from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import {
     faCircleQuestion,
     faCircleXmark,
+    faCloudUpload,
     faEarthAsia,
     faEllipsisVertical,
     faKeyboard,
     faMagnifyingGlass,
+    faMessage,
 } from '@fortawesome/free-solid-svg-icons';
+import 'tippy.js/dist/tippy.css';
 import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import AccountItem from '~/Components/AccountItem';
 import Button from '~/Components/Button';
@@ -92,6 +96,8 @@ function Header() {
             default:
         }
     };
+
+    const currentUser = true;
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -166,33 +172,40 @@ function Header() {
                 </Tippy>
 
                 <div className={cx('actions')}>
-                    {/* <Button primary href="https://www.youtube.com/watch?v=cJCS6DuKwE0" target="_blank">  target="_blank" dùng làm tab qua page khác*/}
-                    <Button text>Upload</Button>
-                    <Button primary>Login</Button>
+                    {currentUser ? (
+                        <>
+                            <Tippy2 content="Upload Video" placement="bottom">
+                                <button className={cx('actions-btn')}>
+                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                </button>
+                            </Tippy2>
+                            {/* <button className={cx('actions-btn')}>
+                                <FontAwesomeIcon icon={faMessage} />
+                            </button> */}
+                        </>
+                    ) : (
+                        <>
+                            {/* <Button primary href="https://www.youtube.com/watch?v=cJCS6DuKwE0" target="_blank">  target="_blank" dùng làm tab qua page khác*/}
+                            <Button text>Upload</Button>
+                            <Button primary>Login</Button>
 
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
-                    </Menu>
+                            {/* <Button outline>Login</Button> */}
 
-                    {/* <Button outline>Login</Button> */}
-
-                    {/* <Button primary large>
+                            {/* <Button primary large>
                         Login
                     </Button> */}
-                    {/* <Button primary small>
+                            {/* <Button primary small>
                         Login
                     </Button> */}
-                    {/* <Button primary disable>
-                        Login
-                    </Button> */}
-
-                    {/* <Button primary leftIcon={<FontAwesomeIcon icon={faSignIn} />}>
+                            {/* <Button primary disable>
                         Login
                     </Button> */}
 
-                    {/* <Button
+                            {/* <Button primary leftIcon={<FontAwesomeIcon icon={faSignIn} />}>
+                        Login
+                    </Button> */}
+
+                            {/* <Button
                         primary
                         leftIcon={<FontAwesomeIcon icon={faSignIn} />}
                         rightIcon={<FontAwesomeIcon icon={faSignIn} />}
@@ -200,10 +213,26 @@ function Header() {
                         Login
                     </Button> */}
 
-                    {/* cx này là của bên Header chứ không phải bên Button */}
-                    {/* <Button rounded className={cx('custome-login')}>
+                            {/* cx này là của bên Header chứ không phải bên Button */}
+                            {/* <Button rounded className={cx('custome-login')}>
                         Upload
                     </Button> */}
+                        </>
+                    )}
+
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src="https://i.pinimg.com/564x/66/c3/f3/66c3f301147f6902ea8089badc741134.jpg"
+                                alt=""
+                            />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
+                    </Menu>
                 </div>
             </div>
         </header>

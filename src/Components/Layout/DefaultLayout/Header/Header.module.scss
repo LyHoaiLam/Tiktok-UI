@@ -92,9 +92,21 @@
     }
 }
 
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.actions-btn {
+    background-color: transparent;
+    font-size: 1.6rem;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
 .more-btn {
     margin-left: 28px;
-    font-size: 2rem;
+    font-size: 2.2rem;
     background-color: transparent;
     padding: 8px;
 
