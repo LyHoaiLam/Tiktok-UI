@@ -40,6 +40,7 @@ function Menu({ children, items = [], onChange = defaultFc }) {
         <Tippy
             interactive
             delay={[0, 1000]}
+            offset={[10, 10]} //Bên phải và chiều cao của Tippy
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>

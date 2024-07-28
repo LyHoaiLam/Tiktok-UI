@@ -9,18 +9,22 @@ import 'tippy.js/dist/tippy.css'; // optional
 import {
     faCircleQuestion,
     faCircleXmark,
-    faCloudUpload,
+    faCoins,
     faEarthAsia,
     faEllipsisVertical,
+    faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faMessage,
+    faSignOut,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import 'tippy.js/dist/tippy.css';
 import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import AccountItem from '~/Components/AccountItem';
 import Button from '~/Components/Button';
 import Menu from '../../Popper/Menu';
+import { UploadIcon } from '~/Components/icons';
+import Image from '~/Components/Image';
 
 const cx = classNames.bind(style);
 
@@ -79,6 +83,8 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
+    const currentUser = true;
+
     const [searchResult, setSarchResult] = useState([]);
 
     useEffect(() => {
@@ -97,7 +103,32 @@ function Header() {
         }
     };
 
-    const currentUser = true;
+    const userMenu = [
+        {
+            icon: <FontAwesomeIcon icon={faUser} />,
+            title: 'View Profile',
+            to: '/@hoailam',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCoins} />,
+            title: 'Get Coins',
+            to: '/@coins',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Settings',
+            to: '/setting',
+        },
+        ...MENU_ITEMS,
+        {
+            icon: <FontAwesomeIcon icon={faSignOut} />,
+            title: 'Log out',
+            to: '/logout',
+            //Thag nào có thuộc tính này thì sẽ có vạch
+            separate2: true,
+        },
+    ];
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -176,7 +207,8 @@ function Header() {
                         <>
                             <Tippy2 content="Upload Video" placement="bottom">
                                 <button className={cx('actions-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    {/* <FontAwesomeIcon icon={faCloudUpload} /> */}
+                                    <UploadIcon />
                                 </button>
                             </Tippy2>
                             {/* <button className={cx('actions-btn')}>
@@ -192,40 +224,41 @@ function Header() {
                             {/* <Button outline>Login</Button> */}
 
                             {/* <Button primary large>
-                        Login
-                    </Button> */}
+                            Login
+                            </Button> */}
                             {/* <Button primary small>
-                        Login
-                    </Button> */}
+                                Login
+                            </Button> */}
                             {/* <Button primary disable>
-                        Login
-                    </Button> */}
+                                Login
+                            </Button> */}
 
                             {/* <Button primary leftIcon={<FontAwesomeIcon icon={faSignIn} />}>
-                        Login
-                    </Button> */}
+                                Login
+                            </Button> */}
 
                             {/* <Button
-                        primary
-                        leftIcon={<FontAwesomeIcon icon={faSignIn} />}
-                        rightIcon={<FontAwesomeIcon icon={faSignIn} />}
-                    >
-                        Login
-                    </Button> */}
+                                primary
+                                leftIcon={<FontAwesomeIcon icon={faSignIn} />}
+                                rightIcon={<FontAwesomeIcon icon={faSignIn} />}
+                            >
+                                Login
+                            </Button> */}
 
                             {/* cx này là của bên Header chứ không phải bên Button */}
                             {/* <Button rounded className={cx('custome-login')}>
-                        Upload
-                    </Button> */}
+                                Upload
+                            </Button> */}
                         </>
                     )}
 
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://i.pinimg.com/564x/66/c3/f3/66c3f301147f6902ea8089badc741134.jpg"
                                 alt=""
+                                fallback="https://i.pinimg.com/564x/f1/61/99/f16199151f943744fb20446845e8d073.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
