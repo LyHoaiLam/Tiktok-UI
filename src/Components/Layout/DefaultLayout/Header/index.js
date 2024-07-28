@@ -14,7 +14,6 @@ import {
     faEllipsisVertical,
     faGear,
     faKeyboard,
-    faMagnifyingGlass,
     faSignOut,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
@@ -23,8 +22,9 @@ import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import AccountItem from '~/Components/AccountItem';
 import Button from '~/Components/Button';
 import Menu from '../../Popper/Menu';
-import { UploadIcon } from '~/Components/icons';
+import { UploadIcon, MessageIcon, HomeIcon, SearchIcon, InboxIcon } from '~/Components/icons';
 import Image from '~/Components/Image';
+import Search from '../Search';
 
 const cx = classNames.bind(style);
 
@@ -84,15 +84,6 @@ const MENU_ITEMS = [
 
 function Header() {
     const currentUser = true;
-
-    const [searchResult, setSarchResult] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSarchResult([]);
-        }, 0);
-    });
-
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
 
@@ -134,7 +125,6 @@ function Header() {
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="imgLogo" />
-
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="118" height="42" fill="currentColor" alt="TikTok">
                         <path
                             fill="#25F4EE"
@@ -172,35 +162,7 @@ function Header() {
                     </svg> */}
                 </div>
 
-                <Tippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Account</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search Account and Videos" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        {/* Loading */}
-                        {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
-                        {/* <Tippy content="Tìm Kiếm" placement="right"> */}
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </Tippy>
+                <Search />
 
                 <div className={cx('actions')}>
                     {currentUser ? (
@@ -211,9 +173,19 @@ function Header() {
                                     <UploadIcon />
                                 </button>
                             </Tippy2>
-                            {/* <button className={cx('actions-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
-                            </button> */}
+
+                            <Tippy2 content="Message" placement="bottom" delay={[0, 50]}>
+                                <button className={cx('actions-btn')} content="Message">
+                                    {/* <FontAwesomeIcon icon={faMessage} /> */}
+                                    <MessageIcon />
+                                </button>
+                            </Tippy2>
+
+                            {/* <Tippy2 content="Inbox" placement="bottom" delay={[0, 50]}>
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                </button>
+                            </Tippy2> */}
                         </>
                     ) : (
                         <>
