@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames/bind';
-import style from './Header.module.scss';
-import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tippy from '@tippyjs/react/headless';
 import Tippy2 from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import classNames from 'classnames/bind';
 import {
     faCircleQuestion,
-    faCircleXmark,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
@@ -18,13 +14,13 @@ import {
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import 'tippy.js/dist/tippy.css';
-import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
-import AccountItem from '~/Components/AccountItem';
 import Button from '~/Components/Button';
 import Menu from '../../Popper/Menu';
-import { UploadIcon, MessageIcon, HomeIcon, SearchIcon, InboxIcon } from '~/Components/icons';
+import { UploadIcon, MessageIcon } from '~/Components/icons';
 import Image from '~/Components/Image';
 import Search from '../Search';
+import style from './Header.module.scss';
+import images from '~/assets/images';
 
 const cx = classNames.bind(style);
 

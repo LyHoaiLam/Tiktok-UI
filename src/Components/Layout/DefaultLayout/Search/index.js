@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import style from './Search.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tippy from '@tippyjs/react/headless';
-import Tippy2 from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import 'tippy.js/dist/tippy.css';
 import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import AccountItem from '~/Components/AccountItem';
@@ -15,19 +14,24 @@ const cx = classNames.bind(style);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
+    const [showResult, setShowResult] = useState(true);
 
     const inputRef = useRef();
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([]);
+            setSearchResult([1, 2, 3]);
         });
     }, []);
+
+    const handleHideResult = () => {
+        setShowResult(false);
+    };
 
     return (
         <Tippy
             interactive
-            visible={searchResult.length > 0}
+            visible={showResult && searchResult.length > 0}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
@@ -39,6 +43,7 @@ function Search() {
                     </PopperWrapper>
                 </div>
             )}
+            onClickOutside={handleHideResult}
         >
             <div className={cx('search')}>
                 <input
@@ -47,6 +52,7 @@ function Search() {
                     placeholder="Search Account and Videos"
                     spellCheck={false}
                     onChange={(e) => setSearchValue(e.target.value)}
+                    onFocus={() => setShowResult(true)}
                 />
 
                 {!!searchValue && (
