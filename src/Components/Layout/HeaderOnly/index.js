@@ -3,7 +3,7 @@ import Header from '../DefaultLayout/Header';
 function HeaderOnly({ children }) {
     return (
         <div>
-            <Header></Header>
+            <Header />
             <div className="container">
                 <div className="content">{children}</div>
             </div>

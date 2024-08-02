@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy2 from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import {
     faCircleQuestion,
     faCoins,
@@ -20,6 +21,7 @@ import Image from '~/Components/Image';
 import Search from '../Search';
 import style from './Header.module.scss';
 import images from '~/assets/images';
+import routesConfig from '~/Config/routes';
 
 const cx = classNames.bind(style);
 
@@ -81,7 +83,6 @@ function Header() {
     const currentUser = true;
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
-
         switch (menuItem.type) {
             case 'language':
                 break;
@@ -119,7 +120,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="imgLogo" />
+                    <Link to={routesConfig.home} className={cx('logoLink')}>
+                        <img src={images.logo} alt="imgLogo" />
+                    </Link>
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="118" height="42" fill="currentColor" alt="TikTok">
                         <path
                             fill="#25F4EE"
