@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy2 from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional

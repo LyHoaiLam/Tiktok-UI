@@ -10,9 +10,7 @@ import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import AccountItem from '~/Components/AccountItem';
 import { SearchIcon } from '~/Components/icons';
 import { useDebounce } from '~/hooks';
-import { type } from '@testing-library/user-event/dist/type';
-// import { get } from '~/utils/request';
-import * as request from '~/utils/request';
+import * as searchService from '~/apiService/searchService';
 
 const cx = classNames.bind(style);
 
@@ -35,20 +33,13 @@ function Search() {
         setLoading(true);
 
         const fetchApi = async () => {
-            try {
-                const res = await request.get(`users/search?`, {
-                    params: {
-                        q: debounced,
-                        type: 'less',
-                    },
-                });
-                setSearchResult(res.data);
-                setLoading(false);
-            } catch (error) {
-                setLoading(false);
-            }
+            setLoading(true);
+            //bên kia cho type = 'less' sẵn rồi bên này không cần chuyền
+            const result = await searchService.search(debounced);
+            setSearchResult(result);
+            console.log('Result: ', result);
+            setLoading(false);
         };
-
         fetchApi();
     }, [debounced]);
 
