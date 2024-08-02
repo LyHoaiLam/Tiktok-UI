@@ -225,7 +225,7 @@ function Header() {
                             <Image
                                 className={cx('user-avatar')}
                                 src="https://i.pinimg.com/564x/66/c3/f3/66c3f301147f6902ea8089badc741134.jpg"
-                                alt=""
+                                alt="Hoài Lâm"
                                 fallback="https://i.pinimg.com/564x/f1/61/99/f16199151f943744fb20446845e8d073.jpg"
                             />
                         ) : (
