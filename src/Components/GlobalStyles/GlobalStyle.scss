@@ -66,8 +66,8 @@ body {
 button,
 input,
 [tabindex] {
-    outline: none;
     border: none;
+    outline: none;
 }
 
 a[href] {
@@ -78,20 +78,20 @@ a[href] {
 //Custome Tippy tooltip
 //Đi qua body cho nó ăn cao hơn
 body .tippy-box {
-    border-radius: 8px;
-    font-weight: 600;
     font-size: 1.6rem;
     line-height: 2.2rem;
+    font-weight: 600;
+    border-radius: 8px;
     background-color: rgba(84, 84, 84, 0.92);
 }
 
 // Cách này cho nhiều class
 body {
     .tippy-box {
-        border-radius: 8px;
-        font-weight: 600;
         font-size: 1.6rem;
         line-height: 2.2rem;
+        font-weight: 600;
+        border-radius: 8px;
         background-color: rgba(84, 84, 84, 0.92);
     }
     .tippy-arrow {

@@ -38,6 +38,7 @@ function Menu({ children, items = [], onChange = defaultFc }) {
 
     return (
         <Tippy
+            visible={true}
             interactive
             delay={[0, 1000]}
             offset={[10, 10]} //Bên phải và chiều cao của Tippy

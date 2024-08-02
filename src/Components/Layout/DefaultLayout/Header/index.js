@@ -165,14 +165,12 @@ function Header() {
                         <>
                             <Tippy2 content="Upload Video" placement="bottom">
                                 <button className={cx('actions-btn')}>
-                                    {/* <FontAwesomeIcon icon={faCloudUpload} /> */}
                                     <UploadIcon />
                                 </button>
                             </Tippy2>
 
                             <Tippy2 content="Message" placement="bottom" delay={[0, 50]}>
                                 <button className={cx('actions-btn')} content="Message">
-                                    {/* <FontAwesomeIcon icon={faMessage} /> */}
                                     <MessageIcon />
                                 </button>
                             </Tippy2>

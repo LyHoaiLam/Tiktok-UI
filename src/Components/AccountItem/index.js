@@ -3,25 +3,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import style from './Account.module.scss';
 import Image from '../Image';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(style);
 
-function AccountItem() {
+function AccountItem({ data }) {
     return (
-        <div className={cx('wrapper')}>
-            <Image
-                className={cx('avatar')}
-                src="https://i.pinimg.com/564x/dc/94/c1/dc94c14dbac131938bee1f94a813bec1.jpg"
-                alt=""
-            />
+        <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
+            <Image className={cx('avatar')} src={data.avatar} alt="" />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span>Nguyễn Văn A</span>
-                    <FontAwesomeIcon className={cx('checkIcon')} icon={faCircleCheck} />
+                    <span>{data.full_name}</span>
+                    {/* Code dưới là data.tick == true thì mới ra tick xanh */}
+                    {data.tick && <FontAwesomeIcon className={cx('checkIcon')} icon={faCircleCheck} />}
                 </h4>
-                <span className={cx('username')}>nguyenvana</span>
+                <span className={cx('username')}>{data.nickname}</span>
             </div>
-        </div>
+        </Link>
     );
 }
 
