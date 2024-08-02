@@ -10,6 +10,10 @@ import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
 import AccountItem from '~/Components/AccountItem';
 import { SearchIcon } from '~/Components/icons';
 import { useDebounce } from '~/hooks';
+import { type } from '@testing-library/user-event/dist/type';
+// import { get } from '~/utils/request';
+import * as request from '~/utils/request';
+
 const cx = classNames.bind(style);
 
 function Search() {
@@ -29,16 +33,23 @@ function Search() {
         }
 
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                // console.log(res.data);
+
+        const fetchApi = async () => {
+            try {
+                const res = await request.get(`users/search?`, {
+                    params: {
+                        q: debounced,
+                        type: 'less',
+                    },
+                });
                 setSearchResult(res.data);
                 setLoading(false);
-            })
-            .catch(() => {
+            } catch (error) {
                 setLoading(false);
-            });
+            }
+        };
+
+        fetchApi();
     }, [debounced]);
 
     const handleClear = () => {
