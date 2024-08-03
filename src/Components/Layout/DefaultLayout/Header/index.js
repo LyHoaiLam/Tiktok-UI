@@ -35,6 +35,11 @@ const MENU_ITEMS = [
             data: [
                 {
                     type: 'language',
+                    code: 'vi',
+                    title: 'Việt Nam',
+                },
+                {
+                    type: 'language',
                     code: 'en',
                     title: 'English',
                 },

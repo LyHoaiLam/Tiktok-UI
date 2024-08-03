@@ -63,6 +63,8 @@ body {
     // font-optical-sizing: auto;
     // font-weight: weight;
     // font-style: normal;
+
+    overflow-y: overlay;
 }
 
 button,
@@ -103,4 +105,33 @@ body {
     .tippy-box[data-placement^='bottom'] > .tippy-arrow::before {
         top: -8px;
     }
+}
+
+// Scroball
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+
+    background-color: rgba(0, 0, 0, 0);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
 }

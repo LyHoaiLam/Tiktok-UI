@@ -37,7 +37,7 @@ function Search() {
             //bên kia cho type = 'less' sẵn rồi bên này không cần chuyền
             const result = await searchService.search(debounced);
             setSearchResult(result);
-            console.log('Result: ', result);
+            // console.log('Result: ', result);
             setLoading(false);
         };
         fetchApi();
@@ -61,46 +61,48 @@ function Search() {
     };
 
     return (
-        <Tippy
-            interactive
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Account</h4>
-                        {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Search Account and Videos"
-                    spellCheck={false}
-                    // onChange={(e) => setSearchValue(e.target.value)}
-                    onChange={handleChange}
-                    onFocus={() => setShowResult(true)}
-                />
-
-                {!!searchValue && !loading && (
-                    <button className={cx('clear')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
+        <div>
+            <Tippy
+                interactive
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Account</h4>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
-                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                {/* <Tippy content="Tìm Kiếm" placement="right"> */}
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Search Account and Videos"
+                        spellCheck={false}
+                        // onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={handleChange}
+                        onFocus={() => setShowResult(true)}
+                    />
 
-                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-                    {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
-                    <SearchIcon />
-                </button>
-            </div>
-        </Tippy>
+                    {!!searchValue && !loading && (
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+                    {/* <Tippy content="Tìm Kiếm" placement="right"> */}
+
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                        {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
+                        <SearchIcon />
+                    </button>
+                </div>
+            </Tippy>
+        </div>
     );
 }
 
