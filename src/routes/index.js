@@ -1,9 +1,9 @@
 import Home from '~/Pages/Home/';
 import Following from '~/Pages/Following';
 import Upload from '~/Pages/Upload';
-import { HeaderOnly } from '~/Components/Layout';
+import { HeaderOnly } from '~/layouts';
 import Profile from '~/Pages/Profile';
-import Search from '~/Components/Layout/DefaultLayout/Search';
+import Search from '~/layouts/DefaultLayout/Search';
 import routesConfig from '~/Config/routes';
 
 //Dành cho không Login vẫn xem đc

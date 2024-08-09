@@ -6,11 +6,11 @@ import classNames from 'classnames/bind';
 import style from './Search.module.scss';
 import 'tippy.js/dist/tippy.css'; // optional
 import 'tippy.js/dist/tippy.css';
-import { Wrapper as PopperWrapper } from '~/Components/Layout/Popper/';
+import { Wrapper as PopperWrapper } from '~/layouts/Popper/';
 import AccountItem from '~/Components/AccountItem';
 import { SearchIcon } from '~/Components/icons';
 import { useDebounce } from '~/hooks';
-import * as searchService from '~/apiService/searchService';
+import * as searchService from '~/Services/searchService';
 
 const cx = classNames.bind(style);
 
