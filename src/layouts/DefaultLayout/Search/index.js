@@ -11,7 +11,7 @@ import AccountItem from '~/Components/AccountItem';
 import { SearchIcon } from '~/Components/icons';
 import { useDebounce } from '~/hooks';
 import * as searchService from '~/Services/searchService';
-import PropTypes from 'prop-types'
+
 const cx = classNames.bind(style);
 
 function Search() {
@@ -70,7 +70,7 @@ function Search() {
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Account</h4>
                             {searchResult.map((result) => (
-                                <AccountItem key={result.id} data={true} />
+                                <AccountItem key={result.id} data={result} />
                             ))}
                         </PopperWrapper>
                     </div>
@@ -104,10 +104,6 @@ function Search() {
             </Tippy>
         </div>
     );
-}
-
-AccountItem.PropTypes = {
-    data:  PropTypes.object,
 }
 
 export default Search;
