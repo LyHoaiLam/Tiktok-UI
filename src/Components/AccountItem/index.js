@@ -4,6 +4,8 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import style from './Account.module.scss';
 import Image from '../Image';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 const cx = classNames.bind(style);
 
@@ -21,6 +23,10 @@ function AccountItem({ data }) {
             </div>
         </Link>
     );
+}
+
+AccountItem.prototype = {
+    data: PropTypes.object.isRequired
 }
 
 export default AccountItem;
