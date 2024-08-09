@@ -1,18 +1,18 @@
+import config from '~/Config';
 import Home from '~/Pages/Home/';
 import Following from '~/Pages/Following';
 import Upload from '~/Pages/Upload';
 import { HeaderOnly } from '~/layouts';
 import Profile from '~/Pages/Profile';
 import Search from '~/layouts/DefaultLayout/Search';
-import routesConfig from '~/Config/routes';
 
 //Dành cho không Login vẫn xem đc
 const publicRoutes = [
-    { path: routesConfig.home, component: Home },
-    { path: routesConfig.following, component: Following },
-    { path: routesConfig.profile, component: Profile },
-    { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
-    { path: routesConfig.search, component: Search, layout: null },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.following, component: Following },
+    { path: config.routes.profile, component: Profile },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+    { path: config.routes.search, component: Search, layout: null },
 ];
 
 //Dành cho Login mới xem đc

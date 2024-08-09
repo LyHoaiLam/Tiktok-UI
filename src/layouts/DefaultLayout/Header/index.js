@@ -21,7 +21,7 @@ import Image from '~/Components/Image';
 import Search from '../Search';
 import style from './Header.module.scss';
 import images from '~/assets/images';
-import routesConfig from '~/Config/routes';
+import config from '~/Config';
 
 const cx = classNames.bind(style);
 
@@ -125,7 +125,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home} className={cx('logoLink')}>
+                    <Link to={config.routes.home} className={cx('logoLink')}>
                         <img src={images.logo} alt="imgLogo" />
                     </Link>
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="118" height="42" fill="currentColor" alt="TikTok">
