@@ -1,10 +1,15 @@
 import config from '~/Config';
-import Home from '~/Pages/Home/';
-import Following from '~/Pages/Following';
-import Upload from '~/Pages/Upload';
+
+
 import { HeaderOnly } from '~/layouts';
+
+// Pages
+import Home from '~/Pages/Home';
+import Following from '~/Pages/Following';
 import Profile from '~/Pages/Profile';
-import Search from '~/layouts/DefaultLayout/Search';
+import Upload from '~/Pages/Upload';
+import Search from '~/Pages/Search';
+
 
 //Dành cho không Login vẫn xem đc
 const publicRoutes = [

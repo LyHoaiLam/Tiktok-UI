@@ -84,10 +84,10 @@ Button.prototype = {
     disable: PropTypes.bool,
     rounded: PropTypes.bool,
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     leftIcon: PropTypes.node,
     rightIcon: PropTypes.node,
-    onClick: PropTypes.string,
-    className: PropTypes.string,
+    onClick: PropTypes.func,
 }
 
 export default Button;

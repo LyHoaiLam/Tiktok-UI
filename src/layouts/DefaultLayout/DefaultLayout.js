@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 import style from './DefaultLayout.module.scss';
-import Header from './Header';
-import Sidebar from './Sidebar';
+import Header from '~/layouts/Components/Header';
+import Sidebar from '~/layouts/Components/Sidebar';
+
 // import RotateImg from '~/Components/Rotate';
 
 const cx = classNames.bind(style);

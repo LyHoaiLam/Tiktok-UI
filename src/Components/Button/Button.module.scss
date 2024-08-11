@@ -47,7 +47,9 @@
     &:hover {
         cursor: pointer;
         border-color: var(--primary);
-        background-color: #fb607f;
+        // background-color: #fb607f;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
+
     }
 }
 
@@ -68,7 +70,6 @@
 }
 
 //Disable
-
 // Button size
 .small {
     min-width: 88px;

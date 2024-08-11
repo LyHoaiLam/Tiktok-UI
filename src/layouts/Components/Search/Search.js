@@ -1,23 +1,22 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState, useRef } from 'react';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import style from './Search.module.scss';
-import 'tippy.js/dist/tippy.css'; // optional
-import 'tippy.js/dist/tippy.css';
-import { Wrapper as PopperWrapper } from '~/layouts/Popper/';
+
+import * as searchServices from '~/Services/searchService';
+import { Wrapper as PopperWrapper } from '~/Components/Popper';
 import AccountItem from '~/Components/AccountItem';
 import { SearchIcon } from '~/Components/icons';
 import { useDebounce } from '~/hooks';
-import * as searchService from '~/Services/searchService';
+import styles from './Search.module.scss';
 
-const cx = classNames.bind(style);
+const cx = classNames.bind(styles);
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const debouncedValue = useDebounce(searchValue, 500);
@@ -30,16 +29,15 @@ function Search() {
             return;
         }
 
-        setLoading(true);
-
         const fetchApi = async () => {
             setLoading(true);
-            //bên kia cho type = 'less' sẵn rồi bên này không cần chuyền
-            const result = await searchService.search(debouncedValue);
+
+            const result = await searchServices.search(debouncedValue);
+
             setSearchResult(result);
-            // console.log('Result: ', result);
             setLoading(false);
         };
+
         fetchApi();
     }, [debouncedValue]);
 
@@ -61,14 +59,16 @@ function Search() {
     };
 
     return (
+        // Using a wrapper <div> tag around the reference element solves
+        // this by creating a new parentNode context.
         <div>
-            <Tippy
+            <HeadlessTippy
                 interactive
                 visible={showResult && searchResult.length > 0}
                 render={(attrs) => (
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
-                            <h4 className={cx('search-title')}>Account</h4>
+                            <h4 className={cx('search-title')}>Accounts</h4>
                             {searchResult.map((result) => (
                                 <AccountItem key={result.id} data={result} />
                             ))}
@@ -81,27 +81,23 @@ function Search() {
                     <input
                         ref={inputRef}
                         value={searchValue}
-                        placeholder="Search Account and Videos"
+                        placeholder="Search accounts and videos"
                         spellCheck={false}
-                        // onChange={(e) => setSearchValue(e.target.value)}
                         onChange={handleChange}
                         onFocus={() => setShowResult(true)}
                     />
-
                     {!!searchValue && !loading && (
                         <button className={cx('clear')} onClick={handleClear}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                    {/* <Tippy content="Tìm Kiếm" placement="right"> */}
 
                     <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-                        {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
                         <SearchIcon />
                     </button>
                 </div>
-            </Tippy>
+            </HeadlessTippy>
         </div>
     );
 }

@@ -1,29 +1,24 @@
 import PropTypes from 'prop-types';
-
-import Button from '~/Components/Button';
-import style from './Menu.module.scss';
 import classNames from 'classnames/bind';
+import Button from '~/components/Button';
+import styles from './Menu.module.scss';
 
-const cx = classNames.bind(style);
+const cx = classNames.bind(styles);
 
 function MenuItem({ data, onClick }) {
     const classes = cx('menu-item', {
-        separate2: data.separate2,
+        separate: data.separate,
     });
     return (
-        // <Button className={cx('menu-item')} leftIcon={data.icon} to={data.to} onClick={onClick}>
-        //     {data.title}
-        // </Button>
-
         <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>
             {data.title}
         </Button>
     );
 }
 
-MenuItem.prototype = {
+MenuItem.propTypes = {
     data: PropTypes.object.isRequired,
     onClick: PropTypes.func,
-}
+};
 
 export default MenuItem;
