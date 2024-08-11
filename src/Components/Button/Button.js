@@ -3,7 +3,6 @@ import styles from './Button.module.scss';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 
-
 const cx = classNames.bind(styles);
 
 function Button({

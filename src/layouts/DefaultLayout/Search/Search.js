@@ -20,12 +20,12 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
@@ -35,13 +35,13 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
             //bên kia cho type = 'less' sẵn rồi bên này không cần chuyền
-            const result = await searchService.search(debounced);
+            const result = await searchService.search(debouncedValue);
             setSearchResult(result);
             // console.log('Result: ', result);
             setLoading(false);
         };
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');
