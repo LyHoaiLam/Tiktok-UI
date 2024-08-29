@@ -13,7 +13,6 @@ function Button({
     small = false,
     large = false,
     text,
-    //Nếu để là text = true thì các button có backgroundColor cũng sẽ có viền dưới text khi Hover vào (Chúng ta chỉ muốn mỗi button có text khi Hover là có viền bên dưới thôi)
     disable,
     rounded = false,
     leftIcon,
@@ -30,10 +29,7 @@ function Button({
     };
 
     if (disable) {
-        //Khi có class disbale thì không có Click (xóa event Click luôn)
-        // delete _props.onClick;
 
-        //Cách 2
         Object.keys(_props).forEach((key) => {
             if (key.startsWith('on') && typeof _props[key] === 'function') {
                 delete _props[key];
@@ -59,8 +55,6 @@ function Button({
         leftIcon,
         rightIcon,
         rounded,
-        //Sau này cần custome gì thì css cho nó vào class rồi add class đó vào bên cx bên kia
-        //Khi có className thì nó lấy giá trị className làm key ở đây (trong trường hợp này là custome-login bên Header)
         [className]: className,
     });
 

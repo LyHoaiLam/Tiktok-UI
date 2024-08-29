@@ -59,11 +59,9 @@ const MENU_ITEMS = [
 function Header() {
     const currentUser = true;
 
-    // Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':
-                // Handle change language
                 break;
             default:
         }
@@ -97,9 +95,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={config.routes.home} className={cx('logo-link')}>
-                    <img src={images.logo} alt="Tiktok" />
-                </Link>
+                <Link to={config.routes.home} className={cx('logo-link')}><img src={images.logo} alt="Tiktok" /></Link>
 
                 <Search />
 

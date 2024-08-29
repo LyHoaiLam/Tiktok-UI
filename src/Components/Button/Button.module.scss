@@ -9,15 +9,12 @@
     padding: 9px 16px;
     border-radius: 4px;
     background-color: transparent;
-    border: 1px solid transparent; //Không bị sê dịch
+    border: 1px solid transparent;
     user-select: none;
 
-    //Khi 2 Button cạnh nhau nó sẽ xa nhau
     + .wrapper {
         margin-left: 8px;
     }
-
-    //Đưa disable vào trong wrapper để có độ ưu tiên cao hơn để có thể thắng css của các class khác
     &.disable {
         pointer-events: none;
         opacity: 0.5;
@@ -39,7 +36,6 @@
     }
 }
 
-//Button Types
 .primary {
     background-color: var(--primary);
     color: var(--white);
@@ -47,7 +43,6 @@
     &:hover {
         cursor: pointer;
         border-color: var(--primary);
-        // background-color: #fb607f;
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
 
     }
@@ -55,7 +50,7 @@
 
 .outline {
     color: var(--primary);
-    border-color: currentColor; //Ăn theo màu phía trên (color)
+    border-color: currentColor;
     &:hover {
         border-color: currentColor;
         background-color: rgba(254, 44, 85, 0.06);
@@ -69,8 +64,6 @@
     }
 }
 
-//Disable
-// Button size
 .small {
     min-width: 88px;
     padding: 4px 16px;

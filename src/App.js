@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
     return (
-        // <Router>
+
         <div>
             <Routes>
                 {publicRoutes.map((route, index) => {
@@ -17,9 +17,7 @@ function App() {
                     } else if (route.layout === null) {
                         Layout = Fragment;
                     }
-                    // const Layout = route.layout === null ? Fragment : DefaultLayout;
-                    //biến muống dùng nó vs JSX thì phải viết hoa chữ đầu
-                    const Page = route.component; //Lần lập nhứ là Home, lần 2 là Folliwng cứ nối tiếp như thế
+                    const Page = route.component; 
                     return (
                         <Route
                             key={index}
@@ -35,7 +33,6 @@ function App() {
                 })}
             </Routes>
         </div>
-        // </Router>
     );
 }
 
